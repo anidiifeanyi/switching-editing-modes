@@ -40,5 +40,15 @@ switchEditorMode(async () => {
 		// Step 5: Switch to "Viewing" mode
 		await page.click('#mode-switch-button')
 		await page.select('#mode-selector', 'Viewing')
+
+		// Step 6: Verify that text input is disabled
+		const viewingText = 'This should not be entered.'
+		await page.type('#document-content', viewingText)
+		const documentContentAfterViewing = await page.evaluate(() => {
+			return (
+				document.querySelector('#document-content')?.textContent || ''
+			)
+		})
+		expect(documentContentAfterViewing).not.toContain(viewingText) // The text should not be entered
 	})
 })
