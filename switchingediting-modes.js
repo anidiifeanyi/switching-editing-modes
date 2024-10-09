@@ -13,6 +13,8 @@ const switchEditorMode = async () => {
 	endTest(async () => {
 		await browser.close()
 	})
+
+	test('Verify mode switching and functionality in document editor', async () => {})
 }
 
 switchEditorMode()
