@@ -54,5 +54,15 @@ switchEditorMode(async () => {
 		// Step 7: Switch to "Editing" mode
 		await page.click('#mode-switch-button')
 		await page.select('#mode-selector', 'Editing')
+
+		// Step 8: Check that text input is enabled
+		const editingText = 'This is an editing change.'
+		await page.type('#document-content', editingText)
+		const documentContentAfterEditing = await page.evaluate(() => {
+			return (
+				document.querySelector('#document-content')?.textContent || ''
+			)
+		})
+		expect(documentContentAfterEditing).toContain(editingText) // Verify that the text is entered
 	})
 })
