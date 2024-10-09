@@ -50,5 +50,9 @@ switchEditorMode(async () => {
 			)
 		})
 		expect(documentContentAfterViewing).not.toContain(viewingText) // The text should not be entered
+
+		// Step 7: Switch to "Editing" mode
+		await page.click('#mode-switch-button')
+		await page.select('#mode-selector', 'Editing')
 	})
 })
