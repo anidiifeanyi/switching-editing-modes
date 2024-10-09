@@ -14,7 +14,10 @@ const switchEditorMode = async () => {
 		await browser.close()
 	})
 
-	test('Verify mode switching and functionality in document editor', async () => {})
+	test('Verify mode switching and functionality in document editor', async () => {
+		// Test Case 1: Create a new document
+		await page.click('#new-document-button') // Assuming button to create a new document has this ID
+	})
 }
 
 switchEditorMode()
