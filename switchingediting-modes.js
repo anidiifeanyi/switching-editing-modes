@@ -36,5 +36,9 @@ switchEditorMode(async () => {
 			) // Assuming tracked changes are tagged with class .tracked-change
 		})
 		expect(trackedChange).toBe(reviewingText) // Verify that the text entered is tracked
+
+		// Step 5: Switch to "Viewing" mode
+		await page.click('#mode-switch-button')
+		await page.select('#mode-selector', 'Viewing')
 	})
 })
