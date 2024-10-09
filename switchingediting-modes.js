@@ -1,6 +1,6 @@
 import puppeteer from 'puppeteer'
 
-const switchEditorMode = async () => {
+switchEditorMode(async () => {
 	let browser
 	let page
 
@@ -17,7 +17,13 @@ const switchEditorMode = async () => {
 	test('Verify mode switching and functionality in document editor', async () => {
 		// Test Case 1: Create a new document
 		await page.click('#new-document-button') // Assuming button to create a new document has this ID
-	})
-}
 
-switchEditorMode()
+		// Test Case 2: Insert a text template
+		await page.click('#insert-template-button') // Assuming template button has this ID
+		await page.waitForSelector('#document-content') // Wait for document to load
+
+		// Step 3: Switch to "Reviewing" mode
+		await page.click('#mode-switch-button') // Assuming the mode switch button has this ID
+		await page.select('#mode-selector', 'Reviewing') // Assuming there's a mode selector to change modes
+	})
+})
